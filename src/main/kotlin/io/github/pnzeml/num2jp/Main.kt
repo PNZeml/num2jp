@@ -1,4 +1,4 @@
-package ru.jr2.num2jp
+package io.github.pnzeml.num2jp
 
 fun String.getNumberInKanji(): String {
     val strBuilder = StringBuilder()

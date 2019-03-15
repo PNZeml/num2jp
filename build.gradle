@@ -4,7 +4,8 @@ plugins {
     id 'signing'
 }
 
-group 'ru.jr2.num2jp'
+group 'io.github.pnzeml'
+archivesBaseName 'num2jp'
 version '1.0.0'
 
 repositories {
@@ -35,4 +36,52 @@ task sourcesJar(type: Jar) {
 }
 artifacts {
     archives javadocJar, sourcesJar
+}
+
+uploadArchives {
+    repositories {
+        mavenDeployer {
+            // Sign POM
+            beforeDeployment { MavenDeployment deployment -> signing.signPom(deployment) }
+
+            // Destination
+            repository(url: "https://oss.sonatype.org/service/local/staging/deploy/maven2/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+            snapshotRepository(url: "https://oss.sonatype.org/content/repositories/snapshots/") {
+                authentication(userName: ossrhUsername, password: ossrhPassword)
+            }
+
+            // Add required metadata to POM
+            pom.project {
+                name 'num2jp'
+                packaging 'jar'
+                description 'Converter western numbers to japanese strings'
+                url 'https://github.com/PNZeml/num2jp'
+
+                scm {
+                    connection 'scm:git:git://github.com/PNZeml/num2jp.git'
+                    developerConnection 'scm:git:ssh://github.com/PNZeml/num2jp.git'
+                    url 'http://github.com/PNZeml/num2jp/tree/master'
+                }
+
+                licenses {
+                    license {
+                        name 'The Apache License, Version 2.0'
+                        url 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+                    }
+                }
+
+                developers {
+                    developer {
+                        id 'PNZeml'
+                        name 'Pavel Zemlianikin'
+                        email 'pavelz1n@yandex.ru'
+                        organization 'jr2'
+                        organizationUrl 'https://github.com/lipgen/JR2'
+                    }
+                }
+            }
+        }
+    }
 }

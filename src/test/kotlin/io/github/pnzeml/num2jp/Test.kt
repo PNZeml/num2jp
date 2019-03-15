@@ -1,7 +1,5 @@
-package ru2.jr2.num2jp
+package io.github.pnzeml.num2jp
 
-import ru.jr2.num2jp.getNumberInKanji
-import ru.jr2.num2jp.getNumberInKatakana
 import kotlin.test.Test
 import kotlin.test.assertEquals
 

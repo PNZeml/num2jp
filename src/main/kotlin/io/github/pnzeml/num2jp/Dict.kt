@@ -1,4 +1,4 @@
-package ru.jr2.num2jp
+package io.github.pnzeml.num2jp
 
 internal val numToKanjiNum: HashMap<Char, Char> = hashMapOf(
     '1' to '一',
