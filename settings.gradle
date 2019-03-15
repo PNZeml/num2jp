@@ -1,0 +1,3 @@
+rootProject.name = 'num2jp'
+enableFeaturePreview('GRADLE_METADATA')
+
