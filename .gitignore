@@ -41,3 +41,8 @@ build/
 .idea/.name
 .idea/artifacts/dist_auto_*
 kotlin-ultimate/
+/.idea/
+/.gradle/
+/.idea/
+/.kotlintest/
+/build/
